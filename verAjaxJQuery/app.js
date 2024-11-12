@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Ejercicio 1: Buscar y mostrar información del Pokemon con jQuery y AJAX
+ * Ejercicio: Buscar y mostrar información del Pokemon con jQuery y AJAX
  */
 
 function buscarPokemon(url) {

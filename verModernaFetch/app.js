@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Ejercicio 1: Buscar y mostrar información del Pokemon con FETCH
+ * Ejercicio: Buscar y mostrar información del Pokemon con FETCH
  */
 
 async function buscarPokemon(url){
