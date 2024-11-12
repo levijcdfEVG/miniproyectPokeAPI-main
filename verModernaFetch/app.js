@@ -22,6 +22,7 @@ async function buscarPokemon(url){
 
     } catch (error) {
         console.error('Hubo un problema con la solicitud fetch:', error);
+        alert('Hubo un problema con la solicitud fetch');
     }
 
     return null;
@@ -88,6 +89,7 @@ botonBusqueda.addEventListener('click', async () => {
         currentPokemonData = pokemonData; // Guarda los datos globalmente
     } else {
         console.error("No se encontraron datos para el Pokémon.");
+        alert('No se encontraron datos para el Pokémon');
         currentPokemonData = null;
     }
 });
@@ -118,5 +120,6 @@ botonAniadir.addEventListener('click', function () {
         pokemonColection.appendChild(pokemonItem);
     } else {
         console.error("No hay ningún Pokémon para agregar a la colección.");
+        alert('No hay ningún Pokémon para agregar a la colección');
     }
 });
