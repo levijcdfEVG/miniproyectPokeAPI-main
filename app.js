@@ -1,4 +1,5 @@
 'use strict';
+
 /**
  * Ejercicio 1: Buscar y mostrar información del Pokemon con FETCH
  */
@@ -24,7 +25,6 @@ async function buscarPokemon(url){
     }
 
     return null;
-
 }
 
 function displayPokemonInfo(pokemonData) {
@@ -70,21 +70,53 @@ function displayPokemonInfo(pokemonData) {
 }
 
 //Main
-
 let botonBusqueda = document.getElementById('search-btn');
-let pokemonData = botonBusqueda.addEventListener('click', async () => {
-    //Recojemos el nombre del pokemon en el value y se lo pasamos a la funcion de busqueda
+let currentPokemonData = null; // Variable global para almacenar el Pokémon buscado
+
+// Obtener información del Pokémon y mostrarla por pantalla
+botonBusqueda.addEventListener('click', async () => {
     let pokemonABuscar = document.getElementById("pokemon-input").value;
     let nombrePokemon = pokemonABuscar.toLowerCase();
-    let url = "https://pokeapi.co/api/v2/pokemon/"+nombrePokemon;
+    let url = "https://pokeapi.co/api/v2/pokemon/" + nombrePokemon;
+
+    // Realiza la búsqueda del Pokémon
     let pokemonData = await buscarPokemon(url);
-    // Verifica si se han obtenido datos antes de intentar mostrarlos
+
+    // Si hay datos, muestra la información y guarda el Pokémon actual
     if (pokemonData) {
         displayPokemonInfo(pokemonData);
+        currentPokemonData = pokemonData; // Guarda los datos globalmente
     } else {
         console.error("No se encontraron datos para el Pokémon.");
+        currentPokemonData = null;
     }
-
 });
 
+// Añadir a la colección
+let botonAniadir = document.getElementById('add-btn');
+botonAniadir.addEventListener('click', function () {
+    // Verifica si hay datos disponibles para agregar
+    if (currentPokemonData) {
+        const pokemonColection = document.getElementById('collection-list');
 
+        // Crear un contenedor para el Pokémon
+        const pokemonItem = document.createElement('div');
+        pokemonItem.classList.add('pokemon-item'); // Clase opcional para estilos
+
+        // Crear un elemento para el nombre
+        const nameElement = document.createElement('p');
+        nameElement.textContent = `Nombre: ${currentPokemonData.name}`;
+        pokemonItem.appendChild(nameElement);
+
+        // Crear un elemento para la imagen
+        const imgElement = document.createElement('img');
+        imgElement.src = currentPokemonData.sprites.front_default;
+        imgElement.alt = `${currentPokemonData.name} sprite`;
+        pokemonItem.appendChild(imgElement);
+
+        // Añadir el elemento al contenedor de la colección
+        pokemonColection.appendChild(pokemonItem);
+    } else {
+        console.error("No hay ningún Pokémon para agregar a la colección.");
+    }
+});

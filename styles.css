@@ -101,6 +101,22 @@ body::before {
   background-color: #ff6347;
 }
 
+/* Estilo del boton de añadir a la colección*/
+#add-btn {
+  padding: 0.7rem 1.2rem;
+  font-size: 1rem;
+  color: #000;
+  background-color: #00f7ff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#add-btn:hover {
+  background-color: #ff6347;
+}
+
 /* Botón "Ver mi colección" */
 #view-collection-btn {
   padding: 0.7rem 1.2rem;
@@ -128,21 +144,9 @@ body::before {
 #collection-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  flex-direction: column; /* Esto hará que los elementos se coloquen verticalmente */
+  gap: 10px; /* Espacio entre los elementos */
   justify-content: center;
-}
-
-.collection-item {
-  text-align: center;
-  background-color: rgba(255, 255, 255, 0.2);
-  padding: 0.5rem;
-  border-radius: 8px;
-  width: 100px;
-}
-
-.collection-item img {
-  width: 80px;
-  height: auto;
 }
 
 /* Botones generales */
