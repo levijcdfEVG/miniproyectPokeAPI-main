@@ -13,6 +13,7 @@ function buscarPokemon(url) {
             return data;
         },
         error: function(xhr, status, error) {
+            alert('Hubo un error al establecer comunicación con la API');
             console.error('Hubo un problema con la solicitud AJAX:', error);
         }
     });
@@ -68,11 +69,13 @@ $('#search-btn').on('click', function() {
                 currentPokemonData = pokemonData; // Guarda los datos globalmente
             } else {
                 console.error("No se encontraron datos para el Pokémon.");
+                alert('No se encontraron datos para el Pokémon');
                 currentPokemonData = null;
             }
         })
         .fail(function(xhr, status, error) {
             console.error('Error en la solicitud AJAX:', error);
+            alert('Error en la solicitud AJAX');
         });
 });
 
@@ -99,5 +102,6 @@ $('#add-btn').on('click', function() {
         pokemonColection.append(pokemonItem);
     } else {
         console.error("No hay ningún Pokémon para agregar a la colección.");
+        alert('No hay ningún Pokémon para agregar a la colección');
     }
 });
